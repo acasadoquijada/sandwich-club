@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -43,7 +44,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
@@ -56,7 +57,43 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
+    // Need to populate the UI with the different values
+
+    private void populateUI(Sandwich sandwich) {
+
+        TextView descriptionTextView = null;
+        TextView originTextView = null;
+        TextView ingredientsTextView = null;
+        TextView akaTextView = null;
+
+        // origin_tv
+
+        // @+id/origin_tv
+
+        descriptionTextView = findViewById(R.id.description_tv);
+
+        originTextView = findViewById(R.id.origin_tv);
+
+        ingredientsTextView = findViewById(R.id.ingredients_tv);
+
+        akaTextView = findViewById(R.id.also_known_tv);
+
+        descriptionTextView.setText(sandwich.getDescription());
+
+        if(sandwich.getPlaceOfOrigin() == null || sandwich.getPlaceOfOrigin().equals("")){
+            originTextView.setText(R.string.unknown_origin_place);
+        } else{
+            originTextView.setText(sandwich.getPlaceOfOrigin());
+        }
+
+        for(int i = 0; i < sandwich.getIngredients().size(); i++){
+            ingredientsTextView.append("* " + sandwich.getIngredients().get(i) + "\n");
+        }
+
+        for(int i = 0; i < sandwich.getAlsoKnownAs().size(); i++){
+            akaTextView.append("* " + sandwich.getAlsoKnownAs().get(i) + "\n");
+        }
+
 
     }
 }

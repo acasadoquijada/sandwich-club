@@ -65,10 +65,10 @@ public class JsonUtils {
 
             JSONArray sandwitchAKAJSON = sandwitchNameJSON.getJSONArray("alsoKnownAs");
 
-            List<String> sandwich_aka = new ArrayList<>(sandwitchAKAJSON.length());
+            List<String> sandwich_aka = new ArrayList<>();
 
-            for(int i=0; i < sandwich_aka.size(); i++)
-                sandwich_aka.set(i,sandwitchAKAJSON.getString(i));
+            for(int i=0; i < sandwitchAKAJSON.length(); i++)
+                sandwich_aka.add(sandwitchAKAJSON.getString(i));
 
             sandwich.setAlsoKnownAs(sandwich_aka);
 
@@ -107,12 +107,13 @@ public class JsonUtils {
 
         try {
 
-            JSONArray sandwichIngredientsJSON = sandwitchNameJSON.getJSONArray("ingredients");
+            JSONArray sandwichIngredientsJSON = sandwichJSON.getJSONArray("ingredients");
 
-            List<String> sandwich_ingredients = new ArrayList<>(sandwichIngredientsJSON.length());
+            List<String> sandwich_ingredients = new ArrayList<>();
 
-            for(int i=0; i < sandwich_ingredients.size(); i++)
-                sandwich_ingredients.set(i,sandwichIngredientsJSON.getString(i));
+            for(int i=0; i < sandwichIngredientsJSON.length(); i++){
+                sandwich_ingredients.add(sandwichIngredientsJSON.getString(i));
+            }
 
             sandwich.setIngredients(sandwich_ingredients);
 
