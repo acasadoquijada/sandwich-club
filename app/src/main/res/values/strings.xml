@@ -6,6 +6,7 @@
     <string name="detail_place_of_origin_label">Place of origin:</string>
     <string name="detail_description_label">Description:</string>
     <string name="detail_ingredients_label">Ingredients:</string>
+    <string name="no_aka">\u2022 Only known as </string>
 
     <!-- Content descriptions-->
     <string name="sandwich_picture_content_description">Sandwich picture</string>
@@ -13,7 +14,8 @@
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>
 
-    <string name="unknown_origin_place">Unknown\n</string>
+    <!-- No data of origin place -->
+    <string name="unknown_origin_place">Unknown</string>
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>

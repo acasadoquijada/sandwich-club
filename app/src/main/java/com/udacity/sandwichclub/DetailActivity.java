@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
+
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -61,22 +64,13 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
-        TextView descriptionTextView = null;
-        TextView originTextView = null;
-        TextView ingredientsTextView = null;
-        TextView akaTextView = null;
+        TextView descriptionTextView = findViewById(R.id.description_tv);
 
-        // origin_tv
+        TextView originTextView = findViewById(R.id.origin_tv);
 
-        // @+id/origin_tv
+        TextView ingredientsTextView = findViewById(R.id.ingredients_tv);
 
-        descriptionTextView = findViewById(R.id.description_tv);
-
-        originTextView = findViewById(R.id.origin_tv);
-
-        ingredientsTextView = findViewById(R.id.ingredients_tv);
-
-        akaTextView = findViewById(R.id.also_known_tv);
+        TextView akaTextView = findViewById(R.id.also_known_tv);
 
         descriptionTextView.setText(sandwich.getDescription());
 
@@ -86,14 +80,22 @@ public class DetailActivity extends AppCompatActivity {
             originTextView.setText(sandwich.getPlaceOfOrigin());
         }
 
-        for(int i = 0; i < sandwich.getIngredients().size(); i++){
-            ingredientsTextView.append("* " + sandwich.getIngredients().get(i) + "\n");
+        populateUIList(sandwich.getIngredients(),ingredientsTextView);
+
+        if(sandwich.getAlsoKnownAs().size() == 0) {
+            akaTextView.setText(R.string.no_aka);
+            akaTextView.append(" " + sandwich.getMainName().toLowerCase());
+        } else{
+            populateUIList(sandwich.getAlsoKnownAs(),akaTextView);
         }
+    }
 
-        for(int i = 0; i < sandwich.getAlsoKnownAs().size(); i++){
-            akaTextView.append("* " + sandwich.getAlsoKnownAs().get(i) + "\n");
+    private void populateUIList(List<String> list, TextView textView){
+        for(int i = 0; i < list.size(); i++){
+            textView.append("\u2022 " + list.get(i)); // \u2022 = *
+            if(i+1 < list.size()){
+                textView.append("\n");
+            }
         }
-
-
     }
 }
