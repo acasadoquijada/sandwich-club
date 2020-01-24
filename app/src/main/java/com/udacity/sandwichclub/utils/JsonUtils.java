@@ -1,9 +1,5 @@
 package com.udacity.sandwichclub.utils;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import com.udacity.sandwichclub.MainActivity;
 import com.udacity.sandwichclub.model.Sandwich;
 
 import org.json.JSONArray;
@@ -15,20 +11,16 @@ import java.util.List;
 
 public class JsonUtils {
 
-    // I need all of this:
-
-    /*
-    private String mainName;
-    private List<String> alsoKnownAs = null;
-    private String placeOfOrigin;
-    private String description;
-    private String image;
-    private List<String> ingredients = null;
+    /**
+     * Constructor.
+     *
+     * It creates a Sandwich object from a JSON object
+     *
+     * @param json string in JSON format containing the sandwich info
+     * @return full formed sandwich object.
      */
 
     public static Sandwich parseSandwichJson(String json) {
-
-        // I obtain a JSON object with all the info about the Sandwich
 
         Sandwich sandwich = new Sandwich();
         JSONObject sandwichJSON = null;
@@ -67,8 +59,13 @@ public class JsonUtils {
 
             List<String> sandwich_aka = new ArrayList<>();
 
-            for(int i=0; i < sandwitchAKAJSON.length(); i++)
+            if(sandwitchAKAJSON.length() == 0){
+                sandwich_aka.add("only known as " + sandwich.getMainName().toLowerCase());
+            }
+
+            for(int i=0; i < sandwitchAKAJSON.length(); i++) {
                 sandwich_aka.add(sandwitchAKAJSON.getString(i));
+            }
 
             sandwich.setAlsoKnownAs(sandwich_aka);
 
@@ -80,7 +77,13 @@ public class JsonUtils {
 
         try {
             String origin_place  = sandwichJSON.getString("placeOfOrigin");
+
+            if(origin_place.equals("")){
+                origin_place = "Unknown";
+            }
+
             sandwich.setPlaceOfOrigin(origin_place);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

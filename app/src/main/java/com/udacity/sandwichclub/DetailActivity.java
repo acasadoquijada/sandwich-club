@@ -3,7 +3,6 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +61,12 @@ public class DetailActivity extends AppCompatActivity {
 
     // Need to populate the UI with the different values
 
+    /**
+     * This method populates the UI with the sandwich information.
+     *
+     * @param sandwich object containing all the information about the sandwich
+     */
+
     private void populateUI(Sandwich sandwich) {
 
         TextView descriptionTextView = findViewById(R.id.description_tv);
@@ -74,25 +79,24 @@ public class DetailActivity extends AppCompatActivity {
 
         descriptionTextView.setText(sandwich.getDescription());
 
-        if(sandwich.getPlaceOfOrigin() == null || sandwich.getPlaceOfOrigin().equals("")){
-            originTextView.setText(R.string.unknown_origin_place);
-        } else{
-            originTextView.setText(sandwich.getPlaceOfOrigin());
-        }
+        originTextView.setText(sandwich.getPlaceOfOrigin());
 
         populateUIList(sandwich.getIngredients(),ingredientsTextView);
 
-        if(sandwich.getAlsoKnownAs().size() == 0) {
-            akaTextView.setText(R.string.no_aka);
-            akaTextView.append(" " + sandwich.getMainName().toLowerCase());
-        } else{
-            populateUIList(sandwich.getAlsoKnownAs(),akaTextView);
-        }
+        populateUIList(sandwich.getAlsoKnownAs(),akaTextView);
+
     }
+
+    /**
+     * Helper method to populate the information stored in List<String>
+     *
+     * @param list list of strings with the information needed
+     * @param textView UI object to be populated with the content of list
+     */
 
     private void populateUIList(List<String> list, TextView textView){
         for(int i = 0; i < list.size(); i++){
-            textView.append("\u2022 " + list.get(i)); // \u2022 = *
+            textView.append(R.string.bullet_point + " " + list.get(i));
             if(i+1 < list.size()){
                 textView.append("\n");
             }
