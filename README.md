@@ -1,26 +1,18 @@
 # Sandwich Club Project Starter Code
 
-## Project Overview
-In this project, you will complete the **Sandwich Club** app to
-show the details of each sandwich once it is selected.
+## General Overview
 
-## Why this Project
+This repo contains all the work done for the **Sandwich Club** of the Udacity's Android Developer Nanodegree. The goal of this project is to complete the  **Sandwich Club** app to
+show the details of each sandwich once it is selected. For more details about this see [Sandwich Club app starter code.](https://github.com/udacity/sandwich-club-starter-code)
 
-Building a layout and populating its fields from data received as JSON
-is a common task for Android Developers. Although JSON parsing is usually
-done using libraries, writing the JSON parsing for  this project will
-help you to better understand how it is processed.
+## Work done
 
-## What Will I Learn?
-Through this project, you will:
-- Learn how to submit projects for review
-- Practice JSON parsing to a model object
-- Design an activity layout
-- Populate all fields in the layout accordingly
+* In [DetailActivity.java](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/java/com/udacity/sandwichclub/DetailActivity.java) two methods have been created:
+	*  [_populateUI_](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/java/com/udacity/sandwichclub/DetailActivity.java#L70<) to populate the UI with the sandwich information
+	* [_populateUIList_](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/java/com/udacity/sandwichclub/DetailActivity.java#L97) helper method used in _populateUI_ 
+	
+* [JsonUtils.java](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/java/com/udacity/sandwichclub/utils/JsonUtils.java) the [constructor](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/java/com/udacity/sandwichclub/utils/JsonUtils.java#L23) creates a correct Sandwich object with the information obtained from a JSON within a String. It takes into account the possibility of empty data (such as no place of origin or aka)
 
-## How Do I Complete this Project?
-Download the [Sandwich Club app starter code.](https://github.com/udacity/sandwich-club-starter-code)
+* [activity_detail.xml](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/res/layout/activity_detail.xml) has been reorganized and added the possibility to scroll
 
-Design the layout for the detail activity so the different elements
-display in a sensible way. Implement the JSON parsing in JsonUtils so it
-produces a Sandwich Object that can be used to populate the UI that you designed.
+* Added a string to print bullet points in [strings.xml](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/res/values/strings.xml)
