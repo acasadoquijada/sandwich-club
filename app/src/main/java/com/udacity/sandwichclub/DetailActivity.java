@@ -96,7 +96,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUIList(List<String> list, TextView textView){
         for(int i = 0; i < list.size(); i++){
-            textView.append(R.string.bullet_point + " " + list.get(i));
+            textView.append("\u2022 " + list.get(i));  // \u2022 = bullet point
             if(i+1 < list.size()){
                 textView.append("\n");
             }

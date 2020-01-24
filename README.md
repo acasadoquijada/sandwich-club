@@ -14,5 +14,3 @@ show the details of each sandwich once it is selected. For more details about th
 * [JsonUtils.java](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/java/com/udacity/sandwichclub/utils/JsonUtils.java) the [constructor](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/java/com/udacity/sandwichclub/utils/JsonUtils.java#L23) creates a correct Sandwich object with the information obtained from a JSON within a String. It takes into account the possibility of empty data (such as no place of origin or aka)
 
 * [activity_detail.xml](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/res/layout/activity_detail.xml) has been reorganized and added the possibility to scroll
-
-* Added a string to print bullet points in [strings.xml](https://github.com/acasadoquijada/sandwich-club/blob/master/app/src/main/res/values/strings.xml)
