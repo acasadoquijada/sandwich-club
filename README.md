@@ -11,7 +11,7 @@ The application shows a series of different sandwiches to the user. Then once a 
 
 ## Screenshots
 
-![mainActivity](doc/images/sandwich_selection.jpg) ![detailActivity](doc/images/sandwich_details.jpg) 
+![mainActivity](doc/images/sandwich_selection_resized.jpg) ![detailActivity](doc/images/sandwich_details_resized.jpg) 
 
 ## Application details
 
